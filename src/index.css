@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fafaf7;
+  --color-ink: #131112;
+  --color-coal: #1a1a1a;
+  --color-smoke: #6b6b6b;
+  --color-line: #e8e4dc;
+  --color-lav: #c8b6e2;
+  --color-lav-deep: #a98ed6;
+  --color-lav-ink: #6f5ba7;
+  --color-lav-soft: #f2ecfa;
+  --color-sand: #efe9dd;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-slow: marquee 52s linear infinite;
+  --animate-scan: scan 3.6s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 1.5s ease-in-out infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scan {
+  0%,
+  100% {
+    top: 3%;
+  }
+  50% {
+    top: 94%;
+  }
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-lav);
+  color: var(--color-ink);
+}
+
+/* ------- custom range sliders ------- */
+input[type="range"].caps-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-lav-deep) var(--fill, 50%),
+    #e9e5de var(--fill, 50%)
+  );
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].caps-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--color-ink);
+  box-shadow: 0 3px 10px rgba(19, 17, 18, 0.18);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+input[type="range"].caps-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"].caps-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--color-ink);
+  cursor: grab;
+}
+
+/* ------- scrollbar ------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d2c6;
+  border-radius: 999px;
+  border: 3px solid var(--color-cream);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ------- helpers ------- */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
